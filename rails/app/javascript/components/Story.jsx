@@ -58,6 +58,12 @@ const Story = props => {
               />
             ))
           }
+          {console.log(story)}
+          {
+            story.pdf_attachment &&
+            <p>
+              <b>{I18n.t("pdf_attachment")}:</b> <a href="{story.pdf_attachment.url}">{story.pdf_attachment.name}</a></p>
+          }
           {
             story.language &&
             <p>

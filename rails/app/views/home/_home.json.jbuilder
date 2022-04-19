@@ -3,6 +3,7 @@ json.stories stories do |story|
   json.points story.places.map(&:point_geojson)
   json.places story.places
   json.language story.language
+  json.pdf_attachment story.pdf_attachment
   json.media story.media do |media|
     json.id media.id
     json.url url_for(media)

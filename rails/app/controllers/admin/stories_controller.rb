@@ -77,5 +77,14 @@ module Admin
       photo.purge
       redirect_back(fallback_location: "/")
     end
+
+    def destroy_pdf_attachment
+      return unless current_user.admin?
+
+      destroyPdf = Story.find(params[:record_id])
+      destroyPdf.pdf_attachment.purge
+
+      redirect_back(fallback_location: "/")
+    end    
   end
 end

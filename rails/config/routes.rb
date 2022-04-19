@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       end
     end
     delete :places_destroy_name_audio, to: 'places#destroy_name_audio'
+    delete :stories_destroy_pdf_attachment, to: 'stories#destroy_pdf_attachment'
 
     resources :curriculum_stories
     resources :themes

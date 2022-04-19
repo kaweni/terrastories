@@ -8,6 +8,7 @@ en:
         birthplace: Born Where
       story:
         desc: Description
+        pdf_attachment: PDF attachment
         interviewer: Interviewer
         video_unsupported: Sorry, your browser doesn't support embedded videos.
         permissions:
@@ -104,6 +105,7 @@ en:
         id: Id
         title: Title
         desc: Description
+        pdf: PDF link
         language: Language
         speakers: Speakers
         interview_location: Interview location

@@ -4,6 +4,7 @@ class Story < ApplicationRecord
   has_many :speaker_stories, inverse_of: :story
   has_many :speakers, through: :speaker_stories
   has_many_attached :media
+  has_one_attached :pdf_attachment
   has_and_belongs_to_many :places
   belongs_to :community
   belongs_to :interview_location, class_name: "Place", foreign_key: "interview_location_id", optional: true
@@ -12,9 +13,16 @@ class Story < ApplicationRecord
 
   validates_presence_of :speakers, message: ': Your story must have at least one Speaker'
   validates_presence_of :places, message: ': Your story must have a Place'
+  validates :pdf_attachment, blob: { content_type: ['application/pdf'] }
 
   def self.import_csv(file_contents, community)
     ApplicationController.helpers.csv_importer(file_contents, self, community)
+  end
+
+  def pdf_attachment_url
+    if pdf_attachment.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(pdf_attachment, only_path: true)
+    end
   end
 
   def self.export_sample_csv
